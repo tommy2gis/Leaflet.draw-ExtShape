@@ -303,3 +303,9 @@
 .leaflet-oldie .leaflet-draw-toolbar {
 	border: 1px solid #999;
 }
+
+
+.leaflet-retina .leaflet-draw-toolbar .leaflet-draw-draw-FineArrow {
+    background-image: linear-gradient(transparent, transparent), url("images/drawDiagonalArrow.png");
+    background-size: 16px auto;
+}
