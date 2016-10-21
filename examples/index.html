@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet Draw</title>
+
+	<link rel="stylesheet" href="../dist/lib/leaflet/leaflet.css" />
+	<link rel="stylesheet" href="../dist/lib/leaflet.draw.css" />
+	<script src="../dist/lib/leaflet/leaflet-src.js"></script>
+	<script src="../dist/lib/leaflet.draw-src.js"></script>
+	<script type="text/javascript" src="../dist/lib/PlotUtils.js"></script>
+	<script type="text/javascript" src="../dist/lib/plot/L.FineArrow.js"></script>
+
+    <script src="../dist/leaflet.draw-FineArrow-src.js"></script>
+</head>
+<body>
+	<div id="map" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+	
+	<script>
+	
+		var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib}),
+			map = new L.Map('map', {layers: [osm], center: new L.LatLng(32.5,118.4), zoom: 10 });
+
+		var drawnItems = new L.FeatureGroup();
+		map.addLayer(drawnItems);
+
+		var drawControl = new L.Control.Draw({
+			draw: {
+				position: 'topleft',
+				polygon: {
+					title: 'Draw a sexy polygon!',
+					allowIntersection: false,
+					drawError: {
+						color: '#b00b00',
+						timeout: 1000
+					},
+					shapeOptions: {
+						color: '#bada55'
+					},
+					showArea: true
+				},
+				polyline: {
+					metric: false
+				},
+				circle: {
+					shapeOptions: {
+						color: '#662d91'
+					}
+				}
+			},
+			edit: {
+				featureGroup: drawnItems
+			}
+		});
+		map.addControl(drawControl);
+
+		map.on('draw:created', function (e) {
+			var type = e.layerType,
+				layer = e.layer;
+
+			if (type === 'marker') {
+				layer.bindPopup('A popup!');
+			}
+
+			drawnItems.addLayer(layer);
+		});
+
+
+		var ellipse = L.fineArrow([[118,32],[118.4,32.5]]);
+		drawnItems.addLayer(ellipse);
+		
+	</script>
+</body>
+</html>
