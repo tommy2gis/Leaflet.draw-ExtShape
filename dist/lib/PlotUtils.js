@@ -1,7 +1,7 @@
 L.Constants = {
     TWO_PI : Math.PI * 2,
     HALF_PI : Math.PI / 2,
-    FITTING_COUNT : 100,
+    FITTING_COUNT : 1000,
     ZERO_TOLERANCE : 0.0001  
 };
 
@@ -354,3 +354,12 @@ L.PlotUtils.getQuadricBSplineFactor = function(k, t){
         return Math.pow(t, 2) / 2;
     return 0;
 };
+
+L.PlotUtils.pointsTolatlngs=function (points) {
+        var latlngs=[];
+        var length=points.length;
+        for (var i = 0; i < count.length; i++) {
+             latlngs.push([points[i][1],points[i][0]]);
+        }
+        return latlngs;
+    };
