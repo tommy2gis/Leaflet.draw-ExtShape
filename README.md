@@ -4,7 +4,7 @@
  
 并拓展Leaflet.draw 实现绘制一些复杂的图形
  
-已完成 直箭头[DEMO](https://shitao1988.github.io/Leaflet.draw-ExtShape/)
+已完成 细直箭头[DEMO](https://shitao1988.github.io/Leaflet.draw-ExtShape/)
 
 后面会实现以下绘制
 
