@@ -1,5 +1,6 @@
 L.DrawToolbar.addInitHook(function () {
 	this.options.FineArrow = {};
+	this.options.AttackArrow = {};
 	this.getModeHandlers = function (map) {
 		return [
 			{
@@ -31,7 +32,13 @@ L.DrawToolbar.addInitHook(function () {
 				enabled: this.options.FineArrow,
 				handler: new L.Draw.Ellipse(map, this.options.FineArrow),
 				title: L.drawLocal.draw.toolbar.buttons.FineArrow
-			}
+			},
+			{
+				enabled: this.options.AttackArrow,
+				handler: new L.Draw.Ellipse(map, this.options.AttackArrow),
+				title: L.drawLocal.draw.toolbar.buttons.AttackArrow
+			},
+			
 		];
 	};
 });

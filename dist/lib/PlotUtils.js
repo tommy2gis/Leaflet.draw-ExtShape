@@ -101,7 +101,7 @@ L.PlotUtils.getThirdPoint = function(startPnt, endPnt, angle, distance, clockWis
     var alpha = clockWise ? azimuth+angle : azimuth-angle;
     var dx=distance * Math.cos(alpha);
     var dy=distance * Math.sin(alpha);
-    return [ endPnt[1] + dy,endPnt[0] + dx]; 
+    return [endPnt[0] + dx,endPnt[1] + dy]; 
 };
 
 L.PlotUtils.getArcPoints = function(center, radius, startAngle, endAngle){
@@ -357,8 +357,8 @@ L.PlotUtils.getQuadricBSplineFactor = function(k, t){
 
 L.PlotUtils.pointsTolatlngs=function (points) {
         var latlngs=[];
-        var length=points.length;
-        for (var i = 0; i < count.length; i++) {
+        var count=points.length;
+        for (var i = 0; i < count; i++) {
              latlngs.push([points[i][1],points[i][0]]);
         }
         return latlngs;
