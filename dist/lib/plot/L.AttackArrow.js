@@ -29,7 +29,7 @@ L.AttackArrow = L.Polygon.extend({
             return;
         }
         var pnts = this.points;
-        // 计算箭尾
+        // è®¡ç®—ç®­å°¾
         var tailLeft = pnts[0];
         var tailRight = pnts[1];
         if (L.PlotUtils.isClockWise(pnts[0], pnts[1], pnts[2])) {
@@ -38,14 +38,14 @@ L.AttackArrow = L.Polygon.extend({
         }
         var midTail = L.PlotUtils.mid(tailLeft, tailRight);
         var bonePnts = [midTail].concat(pnts.slice(2));
-        // 计算箭头
+        // è®¡ç®—ç®­å¤´
         var headPnts = this.getArrowHeadPoints(bonePnts, tailLeft, tailRight);
         var neckLeft = headPnts[0];
         var neckRight = headPnts[4];
         var tailWidthFactor = L.PlotUtils.distance(tailLeft, tailRight) / L.PlotUtils.getBaseLength(bonePnts);
-        // 计算箭身
+        // è®¡ç®—ç®­èº«
         var bodyPnts = this.getArrowBodyPoints(bonePnts, neckLeft, neckRight, tailWidthFactor);
-        // 整合
+        // æ•´åˆ
         var count = bodyPnts.length;
         var leftPnts = [tailLeft].concat(bodyPnts.slice(0, count / 2));
         leftPnts.push(neckLeft);
